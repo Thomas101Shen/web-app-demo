@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<form class="contactForm" action="{{url_for('addContact')}}" method="POST">
+
+    {{contact_form.hidden_tag()}}
+
+    <table>
+      <colgroup>
+        <col style="width: 20%">
+        <col style="width: 20%">
+        <col style="width: 10%">
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>{{contact_form.first_name.label}}</td>
+          <td>{{contact_form.last_name.label}}</td>
+          <td>{{contact_form.address.label}}</td>
+          <td>{{contact_form.description.label}}</td>
+          <td>{{contact_form.category.label}}</td>
+        </tr>
+        <tr>
+          <td>{{contact_form.first_name}}</td>
+          <td>{{contact_form.last_name}}</td>
+          <td>{{contact_form.address}}</td>
+          <td>{{contact_form.description}}</td>
+          <td>
+            <!-- begin for loop here -->
+            {%for button in contact_form.category%}
+              <div>{{button}}{{button.label}}</div> 
+            <!-- end for loop here -->
+            {%endfor%}
+          </td>
+        </tr>
+        <tr>
+          <td>{{contact_form.submit}}</td> <!-- insert submit here -->
+        </tr>
+      </tbody>
+    </table>
+  </form>
+
+</body>
+</html>
